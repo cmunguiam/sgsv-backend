@@ -12,7 +12,7 @@
 	<groupId>pe.gob.osinergmin</groupId>
 	<artifactId>sgsv-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>sgsv-backend</name>
 	<description>Genera archivos txt mcpp</description>
 
