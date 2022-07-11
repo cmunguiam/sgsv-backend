@@ -1,9 +1,5 @@
 package pe.gob.osinergmin.grh.sgsv.model;
 
-import java.sql.Date;
-
-import javax.persistence.Column;
-
 public class RegistroVacionalRequest {
 
 	/**
