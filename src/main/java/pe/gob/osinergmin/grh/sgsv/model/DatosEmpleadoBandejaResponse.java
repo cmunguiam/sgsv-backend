@@ -11,6 +11,7 @@ public class DatosEmpleadoBandejaResponse {
 	 */
 	private static final long serialVersionUID = 6485207767722850260L;
 
+	private Integer identificacion;
 	private String nombres;
 	private Integer saldo;
 	private String fechaVencimiento;
@@ -75,11 +76,12 @@ public class DatosEmpleadoBandejaResponse {
 		this.solicitudesVacacionales = solicitudesVacacionales;
 	}
 
-	@Override
-	public String toString() {
-		return "DatosEmpleadoBandejaResponse [nombres=" + nombres + ", saldo=" + saldo + ", fechaVencimiento="
-				+ fechaVencimiento + ", esJefe=" + esJefe + ", email=" + email + ", cantidaPorAprobar="
-				+ cantidaPorAprobar + ", solicitudesVacacionales=" + solicitudesVacacionales + "]";
+	public Integer getIdentificacion() {
+		return identificacion;
+	}
+
+	public void setIdentificacion(Integer identificacion) {
+		this.identificacion = identificacion;
 	}
 
 }

@@ -115,6 +115,7 @@ public class VacacionesBandejaServiceImpl extends ServiceBase implements Vacacio
 			response.setEsJefe(datosEmpleadoView.getEsJefe());
 			response.setEmail(datosEmpleadoView.getEmail());
 			response.setSolicitudesVacacionales(solicitudes);
+			response.setIdentificacion(Integer.parseInt(identificacion));
 
 			if (datosEmpleadoView.getEsJefe() == 1) {
 				Integer cantidaPorAprobar = solicitudesVacacionalesRepository
