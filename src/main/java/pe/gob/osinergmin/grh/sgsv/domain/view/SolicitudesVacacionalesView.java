@@ -26,6 +26,9 @@ public class SolicitudesVacacionalesView implements Serializable {
 	@Column(name = "FECHA_REGISTRO")
 	private String fechaRegistro;
 
+	@Column(name = "FECHA_MODIFICACION")
+	private String fechaModificacion;
+
 	@Column(name = "COD_TIPO_GOCE")
 	private Integer codTipoGoce;
 
@@ -49,6 +52,9 @@ public class SolicitudesVacacionalesView implements Serializable {
 
 	@Column(name = "COD_EMPL")
 	private Integer codEmpl;
+
+	@Column(name = "COD_EMPL_REEMPLAZO")
+	private Integer codEmplReemplazo;
 
 	@Column(name = "COD_EMPL_APROBACION")
 	private Integer codEmplAprobacion;
@@ -142,12 +148,12 @@ public class SolicitudesVacacionalesView implements Serializable {
 		this.desEstado = desEstado;
 	}
 
-	public Integer getCodEmpl() {
-		return codEmpl;
+	public Integer getCodEmplReemplazo() {
+		return codEmplReemplazo;
 	}
 
-	public void setCodEmpl(Integer codEmpl) {
-		this.codEmpl = codEmpl;
+	public void setCodEmplReemplazo(Integer codEmplReemplazo) {
+		this.codEmplReemplazo = codEmplReemplazo;
 	}
 
 	public Integer getCodEmplAprobacion() {
@@ -182,14 +188,20 @@ public class SolicitudesVacacionalesView implements Serializable {
 		this.codSaldo = codSaldo;
 	}
 
-	@Override
-	public String toString() {
-		return "SolicitudesVacacionalesView [codRegistro=" + codRegistro + ", codSolicitud=" + codSolicitud
-				+ ", fechaRegistro=" + fechaRegistro + ", codTipoGoce=" + codTipoGoce + ", descTipoGoce=" + descTipoGoce
-				+ ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", dias=" + dias + ", codEstado="
-				+ codEstado + ", desEstado=" + desEstado + ", codEmpl=" + codEmpl + ", codEmplAprobacion="
-				+ codEmplAprobacion + ", saldo=" + saldo + ", fechaVencimiento=" + fechaVencimiento + ", codSaldo="
-				+ codSaldo + "]";
+	public String getFechaModificacion() {
+		return fechaModificacion;
+	}
+
+	public void setFechaModificacion(String fechaModificacion) {
+		this.fechaModificacion = fechaModificacion;
+	}
+
+	public Integer getCodEmpl() {
+		return codEmpl;
+	}
+
+	public void setCodEmpl(Integer codEmpl) {
+		this.codEmpl = codEmpl;
 	}
 
 }

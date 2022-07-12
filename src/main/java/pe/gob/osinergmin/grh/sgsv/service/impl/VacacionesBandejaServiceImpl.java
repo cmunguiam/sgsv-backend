@@ -21,6 +21,8 @@ import pe.gob.osinergmin.grh.sgsv.model.PlazoVacionalRequest;
 import pe.gob.osinergmin.grh.sgsv.model.PlazoVacionalResponse;
 import pe.gob.osinergmin.grh.sgsv.model.RegistroVacionalRequest;
 import pe.gob.osinergmin.grh.sgsv.model.RegistroVacionalResponse;
+import pe.gob.osinergmin.grh.sgsv.model.VerRegistroVacionalRequest;
+import pe.gob.osinergmin.grh.sgsv.model.VerRegistroVacionalResponse;
 import pe.gob.osinergmin.grh.sgsv.repository.DatosEmpleadoComboRepository;
 import pe.gob.osinergmin.grh.sgsv.repository.DatosEmpleadoRepository;
 import pe.gob.osinergmin.grh.sgsv.repository.PlazosVacacionalesRepository;
@@ -171,6 +173,99 @@ public class VacacionesBandejaServiceImpl extends ServiceBase implements Vacacio
 		try {
 			Integer insert = registroVacacionalRepository.saveRegistroVacacional(request.getCodRegistro(),request.getCodigoSolicitud(),request.getCodEmplReemplazo(),request.getCodEmplAprobacion(),request.getFechaInicio(),request.getFechaFin(),request.getDias(),request.getDiaMedio());
             System.out.println(insert);
+		} catch (Exception e) {
+			System.out.println("error");
+			e.getMessage();
+		}
+		
+		response.setCodigoSolicitud(request.getCodigoSolicitud());
+		response.setIdentificacion(request.getIdentificacion());
+		return response;
+	}
+	
+	@Override
+	public VerRegistroVacionalResponse verRegistroVacacional(VerRegistroVacionalRequest request) {		
+		
+		VerRegistroVacionalResponse response = new VerRegistroVacionalResponse();
+		
+		SolicitudesVacacionalesView solicitud = solicitudesVacacionalesRepository
+		.findAllByCodResgistro(request.getCodRegistro());
+		
+		List<DatosEmpleadoComboView> listaEmpleadosReemplazo = datosEmpleadoComboRepository.findComboEmpleados();
+
+		List<DatosEmpleadoComboView> listaEmpleadoAprobacion = listaEmpleadosReemplazo;
+				
+		response.setIdentificacion(request.getIdentificacion());
+		response.setNombres(request.getNombres());
+		response.setRegistroVacional(solicitud);
+		response.setListaEmpleadosReemplazo(listaEmpleadosReemplazo);
+		response.setListaEmpleadoAprobacion(listaEmpleadoAprobacion);
+
+		return response;
+	}
+	
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public RegistroVacionalResponse editarRegistroVacacional(RegistroVacionalRequest request) {
+
+		RegistroVacionalResponse response = new RegistroVacionalResponse();
+		try {
+			Integer update = registroVacacionalRepository.saveEditarRegistroVacacional(request.getCodRegistro(),request.getCodEmplReemplazo(),request.getCodEmplAprobacion(),request.getFechaInicio(),request.getFechaFin(),request.getDias(),request.getDiaMedio());
+            System.out.println("updtae");
+		} catch (Exception e) {
+			System.out.println("error");
+			e.getMessage();
+		}
+		
+		response.setCodigoSolicitud(request.getCodigoSolicitud());
+		response.setIdentificacion(request.getIdentificacion());
+		return response;
+	}
+	
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public RegistroVacionalResponse anularRegistroVacacional(VerRegistroVacionalRequest request) {
+
+		RegistroVacionalResponse response = new RegistroVacionalResponse();
+		try {
+			Integer update = registroVacacionalRepository.saveAnularRegistroVacacional(request.getCodRegistro());
+            System.out.println("updtae");
+		} catch (Exception e) {
+			System.out.println("error");
+			e.getMessage();
+		}
+		
+		response.setCodigoSolicitud(request.getCodigoSolicitud());
+		response.setIdentificacion(request.getIdentificacion());
+		return response;
+	}
+	
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public RegistroVacionalResponse enviarJefeRegistroVacacional(VerRegistroVacionalRequest request) {
+
+		RegistroVacionalResponse response = new RegistroVacionalResponse();
+		try {
+			Integer update = registroVacacionalRepository.saveEnviarJefeRegistroVacacional(request.getCodRegistro());
+            System.out.println("updtae");
+		} catch (Exception e) {
+			System.out.println("error");
+			e.getMessage();
+		}
+		
+		response.setCodigoSolicitud(request.getCodigoSolicitud());
+		response.setIdentificacion(request.getIdentificacion());
+		return response;
+	}
+	
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public RegistroVacionalResponse recuperarJefeRegistroVacacional(VerRegistroVacionalRequest request) {
+
+		RegistroVacionalResponse response = new RegistroVacionalResponse();
+		try {
+			Integer update = registroVacacionalRepository.saveRecuperarJefeRegistroVacacional(request.getCodRegistro());
+            System.out.println("updtae");
 		} catch (Exception e) {
 			System.out.println("error");
 			e.getMessage();

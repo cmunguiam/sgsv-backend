@@ -12,6 +12,8 @@ import pe.gob.osinergmin.grh.sgsv.model.PlazoVacionalRequest;
 import pe.gob.osinergmin.grh.sgsv.model.PlazoVacionalResponse;
 import pe.gob.osinergmin.grh.sgsv.model.RegistroVacionalRequest;
 import pe.gob.osinergmin.grh.sgsv.model.RegistroVacionalResponse;
+import pe.gob.osinergmin.grh.sgsv.model.VerRegistroVacionalRequest;
+import pe.gob.osinergmin.grh.sgsv.model.VerRegistroVacionalResponse;
 
 public interface VacacionesBandejaService {
 
@@ -28,5 +30,17 @@ public interface VacacionesBandejaService {
 	public DatosRegistroVacionalResponse obtenerDatosRegistroVacacional(DatosRegistroVacionalRequest request);
 
 	public RegistroVacionalResponse registrarVacacional(RegistroVacionalRequest request);
+	
+	public VerRegistroVacionalResponse verRegistroVacacional(VerRegistroVacionalRequest request);
+	
+	public RegistroVacionalResponse editarRegistroVacacional(RegistroVacionalRequest request);
+	
+	public RegistroVacionalResponse anularRegistroVacacional(VerRegistroVacionalRequest request);
+	
+	public RegistroVacionalResponse enviarJefeRegistroVacacional(VerRegistroVacionalRequest request);
+	
+	public RegistroVacionalResponse recuperarJefeRegistroVacacional(VerRegistroVacionalRequest request);
+
+
 
 }

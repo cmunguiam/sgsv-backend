@@ -20,5 +20,22 @@ public interface RegistroVacacionalRepository
 	@Query(value = "Insert into SGSV_REGISTRO_VACACIONAL (COD_REGISTRO,FECHA_INICIO,FECHA_FIN,DIAS,DIA_MEDIO,COD_EMPL_REEMPLAZO,COD_EMPL_APROBACION,FECHA_REGISTRO,FECHA_MODIFICACION,ESTADO,COD_TIPO_GOCE,COD_SALDO,COD_SOLICITUD,COD_ESTADO) values (?1,?5,?6,?7,?8,?3,?4,sysdate,sysdate,'A','1','1',?2,'1')", nativeQuery = true)
 	Integer saveRegistroVacacional(Integer codRegistro, String codigoSolicitud, Integer codEmplReemplazo,
 			Integer codEmplAprobacion, String fechaInicio, String fechaFin, Double dias, String diaMedio);
+	
+	@Modifying
+	@Query(value = "UPDATE SGSV_REGISTRO_VACACIONAL SET FECHA_INICIO = ?4, FECHA_FIN = ?5, DIAS  = ?6 ,DIA_MEDIO  = ?7,COD_EMPL_REEMPLAZO  = ?2,COD_EMPL_APROBACION = ?3 ,FECHA_MODIFICACION = SYSDATE WHERE COD_REGISTRO =?1", nativeQuery = true)
+	Integer saveEditarRegistroVacacional(Integer codRegistro, Integer codEmplReemplazo,Integer codEmplAprobacion, String fechaInicio, String fechaFin, Double dias, String diaMedio);
+	
+	@Modifying
+	@Query(value = "UPDATE SGSV_REGISTRO_VACACIONAL SET ESTADO = 'I', FECHA_MODIFICACION = SYSDATE WHERE COD_REGISTRO =?1", nativeQuery = true)
+	Integer saveAnularRegistroVacacional(Integer codRegistro);
+	
+	@Modifying
+	@Query(value = "UPDATE SGSV_REGISTRO_VACACIONAL SET COD_ESTADO = 2, FECHA_MODIFICACION = SYSDATE WHERE COD_REGISTRO =?1", nativeQuery = true)
+	Integer saveEnviarJefeRegistroVacacional(Integer codRegistro);
+	
+	@Modifying
+	@Query(value = "UPDATE SGSV_REGISTRO_VACACIONAL SET COD_ESTADO = 1, FECHA_MODIFICACION = SYSDATE WHERE COD_REGISTRO =?1", nativeQuery = true)
+	Integer saveRecuperarJefeRegistroVacacional(Integer codRegistro);
+
 
 }

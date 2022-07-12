@@ -18,4 +18,7 @@ public interface SolicitudesVacacionalesRepository extends JpaRepository<Solicit
 	@Query( value = "select Count(*) as cantidad_aprobar from VW_SOLITUDES_VACACIONALES where COD_EMPL_APROBACION=?",  nativeQuery = true)
 	Integer finCountAprobacion(Integer codEmpl);
 	
+	@Query( value = "select * from VW_SOLITUDES_VACACIONALES where COD_REGISTRO=?",  nativeQuery = true)
+	SolicitudesVacacionalesView findAllByCodResgistro(Integer codRegistro);
+	
 }
